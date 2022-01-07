@@ -1,2 +1,2 @@
 # webdev-labs
-labs for cs396 web dev
+Labs for CS396 Web Development, Andrew Huang (ajh0968)
