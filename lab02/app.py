@@ -12,7 +12,7 @@ app = Flask(__name__)
 #########################
 # some global variables #
 #########################
-current_user = CurrentUser(first_name='Erick', last_name='Rubi', email='erub03@gmail.com', username='erub03')
+current_user = CurrentUser(first_name='Andrew', last_name='Huang', email='erub03@gmail.com', username='erub03')
 
 quotes = (
     '“We May Encounter Many Defeats But We Must Not Be Defeated.” – Maya Angelou',
@@ -29,8 +29,8 @@ quotes = (
 ##############
 @app.route('/')
 def exercise1():
-    return 'Hello World!'
-
+    #return 'Hello, ' + current_user.first_name + " " +  current_user.last_name
+    return "Hello, {} {}!".format(current_user.first_name, current_user.last_name)
 
 ##############
 # Exercise 2 #
@@ -39,21 +39,34 @@ def exercise1():
 def exercise2():
     return render_template(
         'quote-of-the-day.html',
-        user=current_user
+        user = current_user,
+        quote = random.choice(quotes)
     )
 
 ##############
 # Exercise 3 #
 ##############
+
+#@app.route('/restaurant-data')
+#def exercise3():
+#    import json
+#    search_term = 'pizza'
+#    city = 'Evanston, Il'
+#    url = 'https://www.apitutor.org/yelp/simple/v3/businesses/search?location={0}&term={1}'.format(city, search_term)
+#    response = requests.get(url)
+#    data = response.json()
+#    return json.dumps(data)
+
+@app.route('/restaurant-data/<city>/<search_term>')
+@app.route('/restaurant-data/<city>')
 @app.route('/restaurant-data')
-def exercise3():
-    import json
-    search_term = 'pizza'
-    city = 'Evanston, Il'
+def exercise3(city='Evanston, IL', search_term=''):
     url = 'https://www.apitutor.org/yelp/simple/v3/businesses/search?location={0}&term={1}'.format(city, search_term)
     response = requests.get(url)
     data = response.json()
+    pprint(data) # for debugging -- prints the result to the command line
     return json.dumps(data)
+
 
 ##############
 # Exercise 4 #

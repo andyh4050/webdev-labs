@@ -27,6 +27,10 @@ main {
     margin: 3vh;
 }
 
+main img {
+    width: 30vh;
+    height: 30vh;
+}
 
 @media only screen and (max-width: 1000px) {
     /* Media queries go here */
