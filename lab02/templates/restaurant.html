@@ -16,12 +16,18 @@
         <p>{{ restaurant.get('display_address') }}</p>
 
         <table>
-            <r>
-                <p>Price: {{ restaurant.get('display_price') }}</p>
-            </r>
-            <r>
-                <p>Rating: {{ restaurant.get('display_rating') }}</p>
-            </r>
+            <tr>
+                <td>Price: </td>
+                <td>{{ restaurant.get('price') }}</td>
+            </tr>
+            <tr>
+                <td>Rating: </td>
+                <td>{{ restaurant.get('rating') }}</td>
+            </tr>
+            <tr>
+                <td># Reviews:</td>
+                <td>{{ restaurant.get('reviews') }}</td>
+            </tr>
         </table>
     </main>
 </body>
